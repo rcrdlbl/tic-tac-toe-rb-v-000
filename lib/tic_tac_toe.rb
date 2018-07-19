@@ -6,6 +6,24 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
+def turn_count(board)
+  counter = 0
+  board.each do |space|
+    if space != " " && space != ""
+      counter += 1
+    end
+  end
+  return counter
+end
+
+def current_player(board)
+  if turn_count(board) % 2 == 0
+    return "X"
+  else
+    return "O"
+  end
+end
+
 def valid_move? (board, index)
   if (position_taken?(board, index) == false) && index >= 0 && index <= 8
     return true
